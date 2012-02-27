@@ -59,26 +59,21 @@ class CountersController < ApplicationController
   def update
 
     @counter = Counter.find(2)
-    
     # here I need to check which button has been pressed & based on that calling of particular method, either update goal/foul, has to be done      
-    
-    
-
     if params[:commit] == 'up_goal' 
-         update_goal
+      update_goal
     elsif params[:commit] == 'up_foul' 
-         update_foul
+      update_foul
     end 
 
   end
 
   def update_goal
-
     @counter = Counter.find(2)
-      @gl = @counter.goal
-      @gl = @gl + 1
-      @counter.update_attributes(:goal => @gl)
-      my_display
+    @gl = @counter.goal
+    @gl = @gl + 1
+    @counter.update_attributes(:goal => @gl)
+    my_display
 
   end
 
