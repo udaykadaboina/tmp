@@ -1,5 +1,10 @@
 Tmp::Application.routes.draw do
-  resources :counters 
+  resources :counters  do
+   # put :update_goal, :on => :collection
+    put :update_goal, :on => :collection 
+    put :update_foul, :on =>:collection
+
+  end
 #map.connect '/counters/:id', :controller => 'counters', :action => 'update_goal'
   # The priority is based upon order of creation:
   # first created -> highest priority.

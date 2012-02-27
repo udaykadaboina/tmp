@@ -30,7 +30,7 @@ class CountersController < ApplicationController
   end
 
   def edit
-    @counter = Counter.find(1)
+    @counter = Counter.find(2)
   end
 
 
@@ -48,31 +48,41 @@ class CountersController < ApplicationController
     end
   end
 
- 
-  def update
-    @counter = Counter.find(1)
-    if CountersController.action.name == "update_goal" 
-      @counter = Counter.find(1)
-      @gl = @counter.goal
-      @gl = @gl + 1
-      @counter.update_attributes(:goal => @gl)
-    elsif CountersController.action.name == "update_foul" 
-      @counter = Counter.find(1)
-      @fl = @counter.foul
-      @fl = @fl + 1
-      @counter.update_attributes(:foul => @fl)
-    end
-    respond_to do |format|
+
+  def my_display
+     respond_to do |format|
       format.html { redirect_to @counter, :notice => 'Counter was successfully updated.' }
       format.json { head :ok }
-    end
-     
+     end
+  end
+ 
+  def update
+
+    @counter = Counter.find(2)
+    
+    # here I need to check which button has been pressed & based on that calling of particular method, either update goal/foul, has to be done      
+    update_goal
+    update_foul
   end
 
   def update_goal
+
+    @counter = Counter.find(2)
+      @gl = @counter.goal
+      @gl = @gl + 1
+      @counter.update_attributes(:goal => @gl)
+      my_display
+
   end
 
+
+
   def update_foul
+    @counter = Counter.find(2)
+      @fl = @counter.foul
+      @fl = @fl + 1
+      @counter.update_attributes(:foul => @fl)
+      my_display
   end
   
   def destroy

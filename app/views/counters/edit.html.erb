@@ -1,14 +1,14 @@
 <h1>Editing counter</h1>
 
-<%= render 'form' %>
-<!-- <%= form_for(@counter) do |f| %>
+
+ <%= form_for(@counter) do |f| %>
 
  <div class="field">
   <%= f.label :goal %><br />
   <%= f.number_field :goal %>
 </div>
 <div class="actions">
-    <%= f.submit  'update_goal'%>
+    <%=button_to "Update Specs", {:controller => :counters, :action => :update_goal}, {:method => :put }%>
   </div>
 <% end %>
 <%= form_for(@counter) do |g| %>
@@ -22,6 +22,5 @@
 
   
 <% end %>
--->
 <%= link_to 'Show', @counter %> |
 <%= link_to 'Back', counters_path %>
