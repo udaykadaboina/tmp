@@ -30,7 +30,7 @@ class CountersController < ApplicationController
   end
 
   def edit
-    @counter = Counter.find(2)
+    @counter = Counter.find(params[:id])
   end
 
 
@@ -58,7 +58,7 @@ class CountersController < ApplicationController
  
   def update
 
-    @counter = Counter.find(2)
+    @counter = Counter.find(params[:id])
     # here I need to check which button has been pressed & based on that calling of particular method, either update goal/foul, has to be done      
     if params[:commit] == 'up_goal' 
       update_goal
@@ -69,7 +69,7 @@ class CountersController < ApplicationController
   end
 
   def update_goal
-    @counter = Counter.find(2)
+    @counter = Counter.find(params[:id])
     @gl = @counter.goal
     @gl = @gl + 1
     @counter.update_attributes(:goal => @gl)
@@ -80,7 +80,7 @@ class CountersController < ApplicationController
 
 
   def update_foul
-    @counter = Counter.find(2)
+    @counter = Counter.find(params[:id])
       @fl = @counter.foul
       @fl = @fl + 1
       @counter.update_attributes(:foul => @fl)
